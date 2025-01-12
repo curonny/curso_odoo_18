@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+    <record id="category_mansion" model="estate.category">
+        <field name="name">Mansion</field>
+    </record>
+    <record id="category_villa" model="estate.category">
+        <field name="name">Villa</field>
+    </record>
+    <record id="category_apartment" model="estate.category">
+        <field name="name">Apartment</field>
+    </record>
+    <record id="category_house" model="estate.category">
+        <field name="name">House</field>
+    </record>
+</odoo>

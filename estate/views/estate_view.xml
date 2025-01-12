@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="estate_form_view" model="ir.ui.view">
+        <field name="name">estate.form</field>
+        <field name="model">estate.estate</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <field
+                            name="state"
+                            widget="statusbar"
+                            statusbar_visible="new,offer_received,sold"
+                            options="{'clickable': '1'}"
+                        />
+                    </header>
+                    <div class="name">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" placeholder="Property Ronny" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="currency_id" />
+                            <field name="for_sale" />
+                        </group>
+                        <group>
+                            <field name="price" />
+                            <field name="estate_category_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_tree_view" model="ir.ui.view">
+        <field name="name">estate.tree</field>
+        <field name="model">estate.estate</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="estate_category_id" />
+            </list>
+        </field>
+    </record>
+
+    <record id="estate_search_view" model="ir.ui.view">
+        <field name="name">estate.search</field>
+        <field name="model">estate.estate</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="estate_category_id" />
+            </search>
+        </field>
+    </record>
+
+    <record id="estate_act_window" model="ir.actions.act_window">
+        <field name="name">Estate</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">estate.estate</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Estate.
+                </p>
+        </field>
+    </record>
+    <menuitem name="Estate" id="root_estate_menu" />
+    <menuitem
+        name="Estate"
+        id="estate_menu"
+        parent="root_estate_menu"
+        action="estate_act_window"
+    />
+</odoo>
