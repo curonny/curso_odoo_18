@@ -43,8 +43,19 @@ class Estate(models.Model):
                     _("Price cannot be negative and greater than zero")
                 )
 
+    @api.constrains("estate_category_id")
+    def _check_estate_category_id(self):
+        for estate in self:
+            if (
+                estate.estate_category_id.id
+                == self.env.ref("estate.category_mansion").id
+            ):
+                if estate.room_quantity < 3:
+                    raise models.ValidationError(
+                        _("Mansion must have at least 3 rooms")
+                    )
+
     def create(self, values):
-        values["name"] = f'{values["name"]} - {self.env.user.company_id.name}'
         res = super().create(values)
         return res
 

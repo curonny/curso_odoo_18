@@ -24,12 +24,34 @@
                         <group>
                             <field name="currency_id" />
                             <field name="for_sale" />
+                            <field name="room_quantity" />
                         </group>
                         <group>
                             <field name="price" />
                             <field name="estate_category_id" />
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Estate info" name="estate_info">
+                            <group>
+                                <group>
+                                    <field name="owners_ids" widget="many2many_tags" />
+                                </group>
+                                <group>
+                                    <field name="date_availability" />
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Description" name="description">
+                            <field
+                                name="description"
+                                widget="html_composer_message"
+                                force_save="1"
+                                nolabel="1"
+                                placeholder="Write your description here..."
+                            />
+                        </page>
+                    </notebook>
                 </sheet>
                 <chatter />
             </form>
@@ -39,10 +61,12 @@
     <record id="estate_tree_view" model="ir.ui.view">
         <field name="name">estate.tree</field>
         <field name="model">estate.estate</field>
+        <field name="priority">90</field>
         <field name="arch" type="xml">
             <list>
                 <field name="name" />
                 <field name="estate_category_id" />
+                <field name="owners_ids" optional="hide" widget="many2many_tags" />
             </list>
         </field>
     </record>
@@ -53,7 +77,16 @@
         <field name="arch" type="xml">
             <search>
                 <field name="name" />
-                <field name="estate_category_id" />
+                <filter name="price" string="Price" domain="[('price', '>', 0)]" />
+                <separator />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Category"
+                        name="category"
+                        domain="[]"
+                        context="{'group_by':'estate_category_id'}"
+                    />
+                </group>
             </search>
         </field>
     </record>
@@ -65,8 +98,8 @@
         <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
-                    There is no examples click here to add new Estate.
-                </p>
+                There is no examples click here to add new Estate.
+            </p>
         </field>
     </record>
     <menuitem name="Estate" id="root_estate_menu" />
