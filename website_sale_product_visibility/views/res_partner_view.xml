@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_partner_product_visibility_form_inherit" model="ir.ui.view">
+        <field name="name">res_partner_product_visibility.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//notebook/page[@name='sales_purchases']/group/group[@name='sale']/field[@name='user_id']"
+                position="after"
+            >
+                <field name="not_allowed_products_ids" widget="many2many_tags" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
