@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="owl_sale_dashboard.SaleDashboard">
+        <div class="o_sale_dashboard container-fluid py-4 border-bottom bg-view">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="bg-white shadow-md rounded-2xl p-6">
+                    <h2 class="text-lg font-semibold text-gray-700">Ventas Hoy</h2>
+                    <p class="text-3xl font-bold text-blue-600 mt-2">
+                        <t t-out="saleData['order_today']"/>
+                    </p>
+                </div>
+
+                <div class="bg-white shadow-md rounded-2xl p-6">
+                    <h2 class="text-lg font-semibold text-gray-700">Total clientes</h2>
+                    <p class="text-3xl font-bold text-green-600 mt-2">
+                        <t t-out="saleData['total_customer']"/>
+                    </p>
+                </div>
+
+                <div class="bg-white shadow-md rounded-2xl p-6">
+                    <h2 class="text-lg font-semibold text-gray-700">Pedidos Pendientes</h2>
+                    <p class="text-3xl font-bold text-red-500 mt-2">12</p>
+                </div>
+
+                <div class="bg-white shadow-md rounded-2xl p-6">
+                    <h2 class="text-lg font-semibold text-gray-700">Productos en Stock</h2>
+                    <p class="text-3xl font-bold text-yellow-500 mt-2">870</p>
+                </div>
+
+                <div class="bg-white shadow-md rounded-2xl p-6">
+                    <h2 class="text-lg font-semibold text-gray-700">Facturación Mensual</h2>
+                    <p class="text-3xl font-bold text-purple-600 mt-2">$24,000</p>
+                </div>
+
+                <div class="bg-white shadow-md rounded-2xl p-6">
+                    <h2 class="text-lg font-semibold text-gray-700">Visitas al Sitio</h2>
+                    <p class="text-3xl font-bold text-indigo-600 mt-2">3,200</p>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

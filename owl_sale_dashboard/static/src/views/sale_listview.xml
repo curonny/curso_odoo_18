@@ -1,0 +1,7 @@
+<templates>
+    <t t-name="owl_sale_dashboard.SaleListView" t-inherit="web.ListRenderer" t-inherit-mode="primary">
+        <xpath expr="//div[hasclass('o_list_renderer')]" position="before">
+            <SaleDashBoard />
+        </xpath>
+    </t>
+</templates>
